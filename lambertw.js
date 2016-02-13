@@ -158,7 +158,7 @@ function gsl_sf_lambert_Wm1_e(x)
     if (q < 0.0) {
       /* As in the W0 branch above, return some reasonable answer anyway. */
       result.val = -1.0;
-      result.err =  sqrt(-q);
+      result.err =  Math.sqrt(-q);
       result.success = false;
       return result;
     }
@@ -171,7 +171,7 @@ function gsl_sf_lambert_Wm1_e(x)
        * in finite arithmetic for q very small, because the
        * increment alternates and p is near zero.
        */
-      const r = -sqrt(q);
+      const r = -Math.sqrt(q);
       w = series_eval(r);
       if(q < 3.0e-3) {
         /* this approximation is good enough */
@@ -183,8 +183,8 @@ function gsl_sf_lambert_Wm1_e(x)
     }
     else {
       /* Obtain initial approximation from asymptotic near zero. */
-      const  L_1 = log(-x);
-      const  L_2 = log(-L_1);
+      const  L_1 = Math.log(-x);
+      const  L_2 = Math.log(-L_1);
       w = L_1 - L_2 + L_2/L_1;
     }
 
@@ -199,7 +199,7 @@ function gsl_sf_lambert_W0( x)
 
 function gsl_sf_lambert_Wm1( x)
 {
-  return gsl_sf_lambert_Wm1_e(x);
+  return gsl_sf_lambert_Wm1_e(x).val;
 }
 
 if (typeof module !== 'undefined') {
