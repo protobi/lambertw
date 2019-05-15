@@ -5,8 +5,6 @@ const one_over_E = 1 / Math.E;
 function halley_iteration(x, w_initial, max_iters) {
   var w = w_initial, i;
 
-  var result = {};
-
   for (i = 0; i < max_iters; i++) {
     var tol;
     var e = Math.exp(w);
